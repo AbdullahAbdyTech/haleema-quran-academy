@@ -49,6 +49,8 @@
 
 html {
   scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -59,6 +61,8 @@ body {
   font-size: 16px;
   line-height: 1.6;
   letter-spacing: 0;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 [dir="rtl"] body {
@@ -191,6 +195,7 @@ code {
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
+  flex: 0 0 auto;
 }
 
 .site-controls {
@@ -294,11 +299,12 @@ code {
   align-items: center;
   gap: 0.72rem;
   min-width: 0;
+  overflow: hidden;
   font-weight: 600;
   color: var(--green);
 }
 
-.brand span {
+.brand-text {
   display: grid;
   line-height: 1.1;
   color: var(--ink);
@@ -307,6 +313,10 @@ code {
 
 .brand strong {
   color: var(--green);
+}
+
+.brand-subtitle {
+  color: var(--ink);
 }
 
 .brand img {
@@ -1213,8 +1223,12 @@ h3 {
   gap: 2rem;
 }
 
-.brand--footer span,
+.brand--footer .brand-text,
 .brand--footer strong {
+  color: #fff;
+}
+
+.brand--footer .brand-subtitle {
   color: #fff;
 }
 
@@ -1298,6 +1312,10 @@ h3 {
     grid-template-columns: 1fr auto auto;
     justify-content: space-between;
     gap: 0.65rem;
+  }
+
+  .brand {
+    min-width: 0;
   }
 
   .menu-toggle {
@@ -1454,8 +1472,12 @@ h3 {
     white-space: nowrap;
   }
 
-  .brand span {
+  .brand-text {
     font-size: 0.92rem;
+  }
+
+  .brand-subtitle {
+    display: none;
   }
 
   .brand img {
@@ -1513,6 +1535,86 @@ h3 {
   .timezone-grid article,
   .enroll-form {
     padding: 1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  :root {
+    --nav-height: 64px;
+    --announcement-height: 38px;
+  }
+
+  .container {
+    width: min(calc(100% - 22px), var(--container));
+  }
+
+  .nav {
+    gap: 0.45rem;
+  }
+
+  .brand {
+    gap: 0.5rem;
+  }
+
+  .brand img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .menu-toggle,
+  .control-button {
+    width: 40px;
+    height: 40px;
+    min-height: 40px;
+  }
+
+  .language-toggle {
+    min-width: 44px;
+    padding-inline: 0.45rem;
+  }
+
+  .announcement-track {
+    gap: 1rem;
+  }
+
+  h1 {
+    font-size: 2.16rem;
+  }
+
+  h2 {
+    font-size: 1.55rem;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 54px 0 64px;
+  }
+
+  .hero-metrics div {
+    min-width: 0;
+  }
+
+  .quran-animation {
+    display: none;
+  }
+
+  .contact-card {
+    min-height: 86px;
+  }
+}
+
+@media (max-width: 340px) {
+  .brand-text,
+  .brand-subtitle {
+    display: none;
+  }
+
+  .nav {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .nav-actions {
+    justify-self: end;
   }
 }
 

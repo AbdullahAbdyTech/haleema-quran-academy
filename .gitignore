@@ -10,6 +10,7 @@ out/
 node_modules/
 dist/
 build/
+tmp/
 .env
 .env.*
 npm-debug.log*
