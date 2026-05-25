@@ -1,0 +1,18 @@
+{
+  "name": "haleema-quran-academy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static premium website for Haleema Quran Academy.",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "check": "node --check server.js && node --check src/main.js"
+  },
+  "keywords": [
+    "quran",
+    "academy",
+    "online-classes",
+    "static-website"
+  ],
+  "license": "UNLICENSED"
+}
