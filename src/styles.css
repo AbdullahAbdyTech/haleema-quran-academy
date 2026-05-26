@@ -611,6 +611,7 @@ h3 {
   margin: 0;
   line-height: 1.08;
   letter-spacing: 0;
+  text-wrap: balance;
 }
 
 h1 {
@@ -635,6 +636,7 @@ h3 {
   margin: 1.3rem 0 0;
   color: rgba(255, 255, 255, 0.84);
   font-size: 1.12rem;
+  text-wrap: pretty;
 }
 
 .hero-actions {
@@ -1389,12 +1391,12 @@ h3 {
   }
 
   .section {
-    padding: 72px 0;
+    padding: 68px 0;
   }
 
   .hero {
     min-height: 82svh;
-    padding: 58px 0;
+    padding: 56px 0 64px;
   }
 
   .hero-overlay {
@@ -1411,7 +1413,7 @@ h3 {
   }
 
   h1 {
-    font-size: 3rem;
+    font-size: 2.9rem;
   }
 
   h2 {
@@ -1420,6 +1422,15 @@ h3 {
 
   .hero-lead {
     font-size: 1rem;
+  }
+
+  .section-heading {
+    margin-bottom: 2rem;
+  }
+
+  .course-card,
+  .plan-card {
+    min-height: auto;
   }
 
   .proof-grid {
@@ -1448,6 +1459,52 @@ h3 {
   }
 }
 
+@media (max-width: 640px) {
+  :root {
+    --nav-height: 112px;
+  }
+
+  .nav {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "brand menu"
+      "controls controls";
+    align-content: center;
+    row-gap: 0.58rem;
+    padding-block: 0.65rem;
+  }
+
+  .brand {
+    grid-area: brand;
+  }
+
+  .menu-toggle {
+    grid-area: menu;
+  }
+
+  .nav-actions {
+    grid-area: controls;
+    grid-column: auto;
+    justify-self: start;
+  }
+
+  .site-controls {
+    justify-content: flex-start;
+  }
+
+  .brand-text {
+    font-size: 0.9rem;
+  }
+
+  .brand-subtitle {
+    display: block;
+  }
+
+  .nav-links {
+    inset: var(--header-height) 14px auto;
+  }
+}
+
 @media (max-width: 520px) {
   body {
     font-size: 15px;
@@ -1473,21 +1530,18 @@ h3 {
   }
 
   .brand-text {
-    font-size: 0.92rem;
-  }
-
-  .brand-subtitle {
-    display: none;
+    font-size: 0.84rem;
+    line-height: 1.08;
   }
 
   .brand img {
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
   }
 
   .control-button {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     padding: 0;
   }
 
@@ -1507,11 +1561,25 @@ h3 {
   }
 
   h1 {
-    font-size: 2.45rem;
+    font-size: 2.34rem;
   }
 
   h2 {
     font-size: 1.72rem;
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+  }
+
+  .hero-lead,
+  .section-heading p:not(.eyebrow),
+  .timeline p,
+  .course-card p,
+  .plan-card p,
+  .faq-list p,
+  .timezone-grid p {
+    text-align: start;
   }
 
   .hero-actions,
@@ -1536,11 +1604,15 @@ h3 {
   .enroll-form {
     padding: 1rem;
   }
+
+  .contact-card {
+    align-items: flex-start;
+  }
 }
 
 @media (max-width: 420px) {
   :root {
-    --nav-height: 64px;
+    --nav-height: 106px;
     --announcement-height: 38px;
   }
 
@@ -1549,28 +1621,37 @@ h3 {
   }
 
   .nav {
-    gap: 0.45rem;
+    gap: 0.35rem;
   }
 
   .brand {
-    gap: 0.5rem;
+    gap: 0.42rem;
   }
 
   .brand img {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
   }
 
   .menu-toggle,
   .control-button {
-    width: 40px;
-    height: 40px;
-    min-height: 40px;
+    width: 38px;
+    height: 38px;
+    min-height: 38px;
   }
 
   .language-toggle {
-    min-width: 44px;
-    padding-inline: 0.45rem;
+    min-width: 42px;
+    padding-inline: 0.4rem;
+  }
+
+  .site-controls,
+  .nav-actions {
+    gap: 0.28rem;
+  }
+
+  .brand-text {
+    font-size: 0.78rem;
   }
 
   .announcement-track {
@@ -1578,11 +1659,11 @@ h3 {
   }
 
   h1 {
-    font-size: 2.16rem;
+    font-size: 2.04rem;
   }
 
   h2 {
-    font-size: 1.55rem;
+    font-size: 1.48rem;
   }
 
   .hero {
@@ -1604,17 +1685,42 @@ h3 {
 }
 
 @media (max-width: 340px) {
-  .brand-text,
-  .brand-subtitle {
-    display: none;
+  :root {
+    --nav-height: 102px;
   }
 
-  .nav {
-    grid-template-columns: auto 1fr auto;
+  .container {
+    width: min(calc(100% - 18px), var(--container));
   }
 
-  .nav-actions {
-    justify-self: end;
+  .brand {
+    gap: 0.34rem;
+  }
+
+  .brand img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .brand-text {
+    font-size: 0.72rem;
+  }
+
+  .menu-toggle,
+  .control-button {
+    width: 36px;
+    height: 36px;
+    min-height: 36px;
+  }
+
+  .control-button svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .language-toggle {
+    min-width: 38px;
+    padding-inline: 0.28rem;
   }
 }
 
